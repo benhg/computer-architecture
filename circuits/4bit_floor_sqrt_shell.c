@@ -15,7 +15,8 @@ int main()
   for (x[1] = 0 ; x[1] <= 1 ; x[1]++) {
   for (x[0] = 0 ; x[0] <= 1 ; x[0]++) {
 
-    // insert your code here
+      y[0]= x[3] | x [2];
+      y[1]=((!x[2]) & x[1] | x[0]) | (x[3] & (x[2] | x[1] | x[0]));
 
     printf("%d %d %d %d  :  %d %d\n",
 	   x[3],x[2],x[1],x[0], y[1],y[0]) ;

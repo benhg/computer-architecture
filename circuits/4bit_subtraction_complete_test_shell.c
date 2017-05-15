@@ -29,7 +29,26 @@ int main()
   for (y[0] = 0 ; y[0] <= 1 ; y[0]++) {
 
 
-    // your work goes here!!!
+      //assume 2c numbers for subtracting and UB for adding
+      int addSub = 1; //set to 0 for adding and 1 for subtracting
+      c[0]=addSub;
+      
+      z[0] = ( ( y[0] ^ addSub ) ^ ( x[0] ) ) ^ ( addSub );
+      c[1] = ( ( x[0] & ( y[0] ^ addSub ) ) | (addSub & ( ( y[0] ^ addSub ) ^ x[0] ) ) );
+      
+      z[1] = ( ( ( y[1] ^ addSub ) ^ x[1] ) ^ c[1] );
+      c[2] = ( ( x[1] & ( y[1] ^ addSub ) ) | ( c[1] & ( ( y[1] ^ addSub) ^ x[1] ) ) );
+      
+      z[2] = ( ( ( y[2] ^ addSub ) ^ x[2] ) ^ c[2] );
+      c[3] = ( ( x[2] & ( y[2] ^ addSub ) ) | ( c[2] & ( ( y[2] ^ addSub) ^ x[2] ) ) );
+      
+      z[3] = ( ( ( y[3] ^ addSub ) ^ x[3] ) ^ c[3] );
+      c[4] = ( ( x[3] & ( y[3] ^ addSub ) ) | ( c[3] & ( ( y[3] ^ addSub) ^ x[3] ) ) );
+      
+      cf=!c[4];
+      of=(c[4] ^ c[3]);
+      sf=z[3];
+      zf= ((!z[0] & !z[1]) & (!z[2] & !z[3]));
 
 
     printf("%d %d %d %d - %d %d %d %d = %d %d %d %d\n",

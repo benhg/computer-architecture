@@ -1,4 +1,4 @@
-#include <stdio.h>
+ #include <stdio.h>
 
 
 int encode_circuit(int x[3], int y[3])
