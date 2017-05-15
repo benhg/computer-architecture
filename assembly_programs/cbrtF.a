@@ -1,0 +1,46 @@
+        cseg
+        ldAi   0    ;
+        stA    k    ;
+	stA    sixs ;
+        ldAi   1    ;
+        stA    sum1 ;
+        stA    cubes;
+
+loop    cmpA   n    ;
+        ja     done ;
+       
+        ldA    k    ;
+        clc         ;
+        adcAi  1    ;
+        stA    k    ;
+
+        ldA    sixs ;
+        clc         ;
+        adcAi  6    ;
+        stA    sixs ;
+
+	ldA    sum1 ;
+        clc         ;
+        adcA   sixs ;
+        stA    sum1 ;
+
+	ldA    cubes;
+	clc	    ;
+	adcA   sum1 ;
+	stA    cubes;
+
+	jb done;
+
+        jmp    loop ;
+
+done    jmp    done ;
+
+        dseg
+n       rw     1    ;
+k       rw     1    ;
+sixs	rw     1    ;
+sum1    rw     1    ;
+cubes   rw     1    ;
+
+        end
+      

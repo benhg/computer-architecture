@@ -1,0 +1,47 @@
+	cseg
+
+	ldA B;
+	stA templ;
+	ldAi 0;
+	stA temph;
+	stA ansh;
+	stA ansl;
+
+loop	ldA A;
+	cmpAi 0;
+	je done;
+
+	rcrA;
+	stA A;
+	jae shift;
+
+	clc;
+	ldA ansl;
+	adcA templ;
+	stA ansl;
+
+	ldA ansh;
+	adcA temph;
+	stA ansh;
+
+shift	clc;
+	ldA templ;
+	rclA;
+	stA templ;
+	ldA temph;
+	rclA;
+	stA temph;
+
+	jmp loop;
+
+done	jmp done;	
+
+	dseg
+A	rw 1;
+B 	rw 1;
+ansh	rw 1;
+ansl	rw 1;
+temph	rw 1;
+templ	rw 1;
+
+	end

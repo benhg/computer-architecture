@@ -1,0 +1,30 @@
+	cseg
+	ldA a;
+	stA k ; !k = a!
+	
+	ldAi 0 ; !sum = 0!
+	stA sum; 
+	
+loop	cmpAi 0;
+	je done; ! if the answer = 0, return 0!
+
+	ldA sum ; !sum = sum + b!;
+	clc ;
+	adcA b;
+	stA sum ;
+	
+	ldA k; !k = k -1!
+	clc;
+	sbbAi 1;
+	stA k;
+	
+	jne loop; !while(k!= 0)!
+
+done 	jmp done;
+	
+	dseg
+sum 	rw 1 ;
+k 	rw 1 ;
+a 	rw 1 ;
+b 	rw 1 ;
+	end

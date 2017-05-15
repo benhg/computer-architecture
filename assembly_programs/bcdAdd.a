@@ -1,0 +1,51 @@
+	cseg
+
+	ldAi 39321;
+	clc;
+	sbbA y3;
+	stA y3;
+	
+	ldAi 39321;
+	clc;
+	sbbA y1;
+	stA y1;
+	
+	stc;
+
+	bldA x0;
+	badcA y0;
+	daa;
+	bstA z0;
+
+	bldA x1;
+	badcA y1;
+	daa;
+	bstA z1;
+
+	bldA x2;
+	badcA y2;
+	daa;
+	bstA z2;
+
+	bldA x3;
+	badcA y3;
+	daa;
+	bstA z3;
+
+done 	jmp done;
+
+	dseg
+x3	rb 1;
+x2	rb 1;
+x1	rb 1;
+x0	rb 1;
+y3	rb 1;
+y2	rb 1;
+y1	rb 1;
+y0	rb 1;
+z3	rb 1;
+z2	rb 1;
+z1	rb 1;
+z0	rb 1;
+	end
+

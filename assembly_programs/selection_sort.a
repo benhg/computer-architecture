@@ -1,0 +1,20 @@
+!Selection Sort in assembly!
+cseg
+!loop within a loop!
+ldAi x;
+stA xpr;
+stA ypr;
+loop ldAr xpr;
+loop2
+incA;
+incA;
+stA xpr;
+
+done jmp done;
+dseg
+x rw 100;
+xpr rw 1;
+ypr rw 1;
+temp rw 1;
+end
+

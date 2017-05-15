@@ -1,0 +1,33 @@
+	cseg 
+
+	ldAi 0000;
+	stA sqrt;
+	adcAi 1;
+	stA sqre;
+	stA k;
+
+loop	ldA n;
+	cmpA sqre;
+	ja done;
+	ldA sqrt;
+	adcAi 1;
+	stA sqrt;
+	clc;
+	ldA k;
+	adcAi 2;
+	stA k;
+	clc;
+	ldA sqre;
+	adcA k;
+	stA sqre;
+	clc;
+	jmp loop;
+done	jmp done;
+
+	dseg
+n	rw  1 ;
+sqrt	rw  1 ;
+k	rw  1 ;
+sqre	rw  1 ;
+
+	end

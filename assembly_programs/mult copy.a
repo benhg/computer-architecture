@@ -1,0 +1,48 @@
+       cseg
+       ldA    a       ;
+       stA    tlo     ;
+       ldAi   0       ;
+       stA    thi     ;
+       stA    lo      ;
+       stA    hi      ;
+
+lp     ldA    b       ; 
+       cmpAi  0       ;
+       je     finish  ;
+
+       rcrA           ;
+       stA    b       ;
+       jae    shift   ;
+
+       ldA    lo      ;
+       clc            ;
+       adcA   tlo     ;
+       stA    lo      ;
+
+       ldA    hi      ;
+       adcA   thi     ;
+       stA    hi      ;
+
+shift  clc            ;
+       ldA    tlo     ;
+       rclA           ;
+       stA    tlo     ;
+
+       ldA    thi     ;
+       rclA           ;
+       stA    thi     ;
+
+       jmp    lp      ;
+
+finish jmp    finish  ;
+
+       dseg
+a      rw     1       ;
+b      rw     1       ;
+tlo    rw     1       ;
+thi    rw     1       ;
+lo     rw     1       ;
+hi     rw     1       ;
+
+       end
+  

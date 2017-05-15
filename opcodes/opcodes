@@ -1,0 +1,45 @@
+
+            OPCODE and INSTRUCTION SUMMARY for FM-9750
+
+
+00 xchAP             exchange acc and ps
+01 xchAS             exchange acc and sp
+02 ldAi   <data>     load immediate data into acc
+03 ldA    <address>  load acc from address
+04 stA    <address>  store acc to address
+05 pushA             push acc onto stack
+06 popA              pop stack into acc
+07 adcA   <address>  add with carry what's at address into acc
+08 sbbA   <address>  subtract with borrow what's at address from acc
+09 cmpA   <address>  compate acc to what's at address
+0a andA   <address>  and what's at address with acc
+0b orA    <address>  or what's at address with acc
+0c notA              invert bits in acc
+0d jmp    <address>  jump to address
+0e je     <address>  jump to address if equal           (UB z == 1)
+0f jne    <address>  jump to address if not equal       (UB z == 0)
+10 jb     <address>  jump to address if below           (UB c == 1)
+11 jae    <address>  jump to address if above or equal  (UB c == 0)
+12 jbe    <address>  jump to address if below or equal  (UB c == 1  or z == 1)
+13 ja     <address>  jump to address if above           (UB c == 0 and z == 0)
+14 call   <address>  subroutine call to address
+15 ret               return from subroutine
+16 clc               clear carry      (c = 0)
+17 stc               set carry        (c = 1)
+18 cmc               complement carry (c = 1-c)
+19 rcrA              rotate carry right acc
+1a rclA              rotate carry left acc
+1b in                input 1 byte to acc
+1c out               output 1 byte from acc
+1d halt              halt processor
+1e lAA               load acc using contents of acc as address
+1f adcAi  <data>     add with carry immediate data into acc
+20 sbbAi  <data>     subtract with borrow immediate data from acc
+21 cmpAi  <data>     compate acc to immediate data
+22 andAi  <data>     and immediate data with acc
+23 orAi   <data>     or immediate data with acc
+24 jl     <address>  jump to address if less              (2C s != overflow) 
+25 jge    <address>  jump to address if greater or equal  (2C s == overflow)
+26 jle    <address>  jump to address if less or equal   (2C s != overflow or z == 1)
+27 jg     <address>  jump to address if greater        (2C s == overflow and z == 0)
+28 nop               no operation

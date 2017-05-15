@@ -1,0 +1,31 @@
+	cseg
+
+	ldA n;
+	rcr;
+	stA n;
+	
+	orAi 2047;
+	cmpAi 4095;
+	jne sc;
+	sbbAi 768;
+	
+sc	orAi 127;
+	cmpAi 255;
+	jne thir;
+	sbbAi 48;
+
+thir	orAi 7;
+	cmpAi 15;
+	stA n;
+	jne done;
+	sbbAi 3;
+	stA n;
+
+done	jmp done;
+
+	
+	dseg
+	
+n	rw 1;
+
+	end

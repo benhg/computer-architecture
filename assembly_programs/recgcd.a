@@ -1,0 +1,75 @@
+                  cseg
+                  ldAi     4000      ;
+                  xchAS              ;
+                  jmp      main      ;
+
+gcd               ldAi     0         ; ! if a == 0 !
+                  cmpAS    4         ; ! r = b !
+                  jne      g1        ;
+                  ldAS     2         ;
+                  stAS    -2         ;
+                  jmp      gquit     ;        
+
+g1                cmpAS    2         ; ! else if b == 0 !
+                  jne      g2        ; ! r = a !
+                  ldAS     4         ;   
+                  stAS    -2         ;
+                  jmp      gquit     ;
+
+g2                ldAS     4         ; ! else if (a > b) !
+                  cmpAS    2         ; ! r = gcd(a-b,b) !
+                  jbe      g3        ;
+
+                  ldAS     2         ;
+                  stAS    -6         ; ! child b = b !
+ 
+                  ldAS     4         ;
+                  clc                ;
+                  sbbAS    2         ;
+                  stAS    -4         ; ! child a = a - b !
+
+                  addSi   -6         ; ! 6 = 2*numlocals !
+                  call     gcd       ;
+                  addSi    6         ;
+
+                  ldAS    -10        ;
+                  stAS    -2         ; ! current r = child r !
+                  jmp      gquit     ;
+
+
+g3                ldAS     4         ; ! else r = gcd(a,b-a) !
+                  stAS    -4         ; ! child a = a !
+ 
+                  ldAS     2         ;
+                  clc                ;
+                  sbbAS    4         ;
+                  stAS    -6         ; ! child b = b - a !
+
+                  addSi   -6         ; ! 6 = 2*numlocals !
+                  call     gcd       ;
+                  addSi    6         ;
+
+                  ldAS    -10        ;
+                  stAS    -2         ; ! current r = child r !
+
+
+gquit             ret                ;
+
+
+main              ldA      ma        ;
+                  pushA              ;
+                  ldA      mb        ;
+                  pushA              ;
+                  call     gcd       ;
+                  addSi    4         ; ! restore stack ptr to ori. !
+                  ldAS    -8         ; ! recover result !
+                  stA      result    ;
+done              jmp      done      ;
+
+                  dseg 
+ma                rw       1         ;
+mb                rw       1         ;
+result            rw       1         ;
+      
+                  end
+

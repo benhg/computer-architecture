@@ -1,0 +1,65 @@
+	cseg
+
+	ldAi 0000;
+	stA cbrt;
+	stA sum;
+
+loop	cmpA inp;
+	ja finish;
+	ldA cbrt;
+	clc;
+	adcAi 0001;
+	stA cbrt;
+	jmp cube;
+return  ldA sum;
+	jmp loop;
+
+cube	ldAi 0000;
+	stA sum;
+	ldA cbrt;
+	stA k;
+
+x1	cmpAi 0000;
+	je ph2;
+	ldA sum;
+	clc;
+	adcA cbrt;
+	stA sum;
+	ldA k;
+	clc;
+	sbbAi 1;
+	stA k;
+	jmp x1;
+
+ph2	ldA sum;
+	stA k;
+	ldAi 0000;
+	stA sum;
+	ldA k;
+
+x2	cmpAi 0000;
+	je return;
+	ldA sum;
+	clc;
+	adcA cbrt;
+	stA sum;
+	ldA k;
+	clc;
+	sbbAi 1;
+	stA k;
+	jmp x2;
+
+finish	ldA cbrt;
+	clc;
+	sbbAi 1;
+	stA cbrt;
+
+done 	jmp done;
+
+	dseg
+inp	rw  1 ;
+cbrt	rw  1 ;
+sum 	rw  1 ;
+k 	rw  1 ;
+
+	end

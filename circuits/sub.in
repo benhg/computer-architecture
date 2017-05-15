@@ -1,0 +1,13 @@
+cseg
+ldA p;
+clc;
+sbbA q;
+stA z;
+fin jmp fin;
+
+dseg
+
+p rw 1;
+q rw 1;
+z rw 1;
+  end

@@ -1,0 +1,60 @@
+	cseg
+
+	ldAi x;
+	stA iPt;
+	stA lPt;
+
+mloop	ldAr iPt;
+	cmpAi 65535;
+	je done;
+
+	ldA iPt;
+	stA lPt;
+
+	ldAr iPt;
+	stA min;
+	ldA iPt;
+	stA minPt;
+
+loop	ldA lPt;
+	incA;
+	incA;
+	stA lPt;
+
+	ldAr lPt;
+	cmpA min;
+	ja skip;
+	stA min;
+	ldA lPt;
+	stA minPt;
+skip	ldAr lPt;
+	cmpAi 65535;
+	jne loop;
+
+	ldA min;
+	stA temp;
+	ldAr iPt;
+	stAr minPt;
+	ldA temp;
+	stAr iPt;
+
+	ldA iPt;
+	incA;
+	incA;
+	stA iPt;
+
+	jmp mloop;
+
+done	jmp done;
+
+
+	dseg
+x	rw 100;
+iPt	rw 1;
+lPt	rw 1;
+min	rw 1;
+minPt	rw 1;
+temp	rw 1;
+
+	end
+

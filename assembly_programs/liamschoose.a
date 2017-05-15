@@ -1,0 +1,55 @@
+	cseg
+	ldAi	4000	;
+	xchAS		;
+	jmp	main	;
+
+work	ldAi	0	; !answers are way too high!
+	cmpAS	2	;
+	je	add	;
+
+	ldAS	4	;
+	cmpAS	2	;
+	je	add	;
+
+	ldAS	2	;
+	decA		;
+	stAS	-4	;
+	ldAS	4	;
+	decA		;
+	stAS	-2	;
+	addSi	-4	;
+	call	work	;
+	addSi	4	;
+
+	ldAS	2	;
+	stAS	-4	;
+	ldAS	4	;
+	decA		;
+	stAS	-2	;
+	addSi	-4	;
+	call	work	;
+	addSi	4	;
+        jmp    ework    ;
+		
+add	ldA	t	; !does this not work because im calling doesnt exist if 1st one!
+	incA		;	
+	stA	t	;
+ework	ret		;
+
+main	ldAi	0	;
+	stA	t	;	!somehow resetting makes infinate loop!
+	ldA	n	;
+	pushA		;
+	ldA	k	;
+	pushA		;
+	call	work	;
+
+done	jmp	done	;
+
+	dseg
+n	rw	1	;
+k	rw	1	;
+t	rw	1	;
+
+	end
+

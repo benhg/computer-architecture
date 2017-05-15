@@ -1,0 +1,33 @@
+! sum = a x b by repeated addition !
+       cseg 
+
+       ldAi 0 ;
+       stA  sum ;
+
+       ldAi  0 ;
+       stA  k ;
+
+loop   cmpA a ;
+       jae    done ;
+
+       ldA sum ;
+       clc ;
+       adcA  b ;
+       stA sum ;
+
+       ldA k ;
+       clc ;
+       adcAi 1 ;
+       stA k ;
+
+       jmp loop ;
+
+done   jmp done ;
+
+       dseg
+a      rw  1 ;
+b      rw  1 ;
+sum    rw  1 ;
+k      rw  1 ;
+
+       end

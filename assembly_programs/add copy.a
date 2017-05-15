@@ -1,0 +1,11 @@
+       cseg 
+       ldA x ;
+       clc ;
+       adcA y ;
+done   jmp done ;
+
+       dseg
+x      rw  1 ;
+y      rw  1 ;
+
+       end

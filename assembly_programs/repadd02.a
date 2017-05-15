@@ -1,0 +1,33 @@
+! sum = a x b by repeated addition !
+! interesting case : 0 x b !
+! it works but for a curious reason !
+! it actually does 65536 x b which looks like zero !
+       cseg 
+
+       ldA  a ;
+       stA  k ;
+
+       ldAi 0 ;
+       stA  sum ;
+
+loop   ldA sum ;
+       clc ;
+       adcA  b ;
+       stA sum ;
+
+       ldA k ;
+       clc ;
+       sbbAi 1 ;
+       stA k ;
+
+       jne loop ;
+
+done   jmp done ;
+
+       dseg
+a      rw  1 ;
+b      rw  1 ;
+sum    rw  1 ;
+k      rw  1 ;
+
+       end

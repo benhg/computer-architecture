@@ -1,0 +1,35 @@
+	cseg
+
+	ldA ac;
+	notA;
+	stc;
+	adcA bc;
+	stA sc;
+
+	ldA ab;
+	notA;
+	adcA bb;
+	stA sb;
+
+	ldA aa;
+	notA;
+	adcA ba;
+	stA sa;
+
+	cmc;
+done	jmp done;
+
+
+	dseg
+ba 	rw 1;
+bb	rw 1;
+bc	rw 1;
+aa 	rw 1;
+ab	rw 1;
+ac	rw 1;
+sa 	rw 1;
+sb	rw 1;
+sc	rw 1;
+
+end
+

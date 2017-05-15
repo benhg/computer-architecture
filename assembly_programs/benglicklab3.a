@@ -1,0 +1,67 @@
+!convert binary to decimal!
+cseg
+ldAi 1 ;
+bstA pow2lo ;
+ldAi 0;
+bstA pow2hi;
+bstA outputlo;
+bstA outputhi;
+bstA pow2mid;
+bstA outputmid;
+
+loop 
+
+ldA input ;
+cmpAi 0 ;
+je done ;
+
+clc ;
+rcrA ;
+stA input ;
+jae powers ;
+
+bldA outputlo ;
+clc;
+badcA pow2lo ;
+daa ;
+bstA outputlo ;
+
+bldA outputmid ;
+badcA pow2mid ;
+daa ;
+bstA outputmid;
+
+bldA outputhi ;
+badcA pow2hi ;
+daa ;
+bstA outputhi;
+
+powers clc;
+bldA pow2lo ;
+badcA pow2lo ;
+daa ;
+bstA pow2lo ;
+
+bldA pow2mid ;
+badcA pow2mid ;
+daa ;
+bstA pow2mid ;
+
+bldA pow2hi ;
+badcA pow2hi ;
+daa ;
+bstA pow2hi ;
+jmp loop;
+
+done jmp done ;
+
+dseg
+input rw 1 ;
+outputhi rb 1;
+outputmid rb 1;
+outputlo rb 1 ;
+pow2hi rb 1;
+pow2mid rb 1 ;
+pow2lo rb 1 ;
+end
+

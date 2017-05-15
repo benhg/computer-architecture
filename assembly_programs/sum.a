@@ -1,0 +1,20 @@
+	cseg 
+
+	ldAi 0000;
+loop	clc;
+	adcA n;
+	stA sum;
+	ldA n;
+	cmpAi 0000;
+	je done;
+	sbbAi 1;
+	stA n;
+	ldA sum;
+	jmp loop;
+done	jmp done;
+
+	dseg
+n	rw  1 ;
+sum	rw  1 ;
+
+	end

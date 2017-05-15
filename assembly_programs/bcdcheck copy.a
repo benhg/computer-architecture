@@ -1,0 +1,12 @@
+      cseg
+      stc
+      bldA   x ;
+      badcA  y ;
+      daa      ;
+      bstA   z ;
+done jmp done  ;
+      dseg
+x     rb    1 ;
+y     rb    1 ;
+z     rb    1 ;
+      end

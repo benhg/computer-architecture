@@ -1,0 +1,59 @@
+	cseg 
+
+	bldAi 0;
+	bstA sqrt;
+	bstA oddh;
+	bstA sqrh;
+	badcAi 1;
+	bstA sqrl;
+	bstA oddl;
+
+loop	ldA sqrl;
+	cmpA nl;
+	ja done;
+
+	clc;
+	bldA sqrt;
+	badcAi 1;
+	daa;
+	bstA sqrt;
+
+	bldA oddl;
+	badcAi 2;
+	daa;
+	bstA oddl;
+	bldA oddh;
+	badcAi 0;
+	daa;
+	bstA oddh;
+	clc;
+
+	bldA sqrl;
+	badcA oddl;
+	daa;
+	bstA sqrl;
+	bldA sqrh;
+	badcA oddh;
+	daa;
+	bstA sqrh;
+	
+	jb done;
+
+	jmp loop;
+
+done	jmp done;
+
+	dseg
+nl	rb  1 ;
+nh	rb  1 ;
+
+sqrt	rb  1 ;
+
+oddl	rb  1 ;
+oddh	rb  1 ;
+
+sqrl	rb  1 ;
+sqrh	rb  1 ;
+	
+	end
+

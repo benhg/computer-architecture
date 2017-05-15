@@ -1,0 +1,61 @@
+Your Name :
+Your Computer's Name :
+
+You may use your notes.
+You may use a simple calculator, one that cannot manipulate 
+    hexadecimal directly.
+You may NOT access the internet or communicate with anyone else.
+You may use a lab computer to write code for problem 5.  
+    The file, "4bit_floor_sqrt_shell.c", supplies you
+    with the basic framework for solving this problem.
+    Enhance it with your solution and then rename it as follows :
+    mv   4bit_floor_sqrt_shell.c   yourname277m.c
+Show the details of your work.  Answers without supporting work
+    will not receive credit.
+
+Each of problems 1,2,3,4 is worth 18 points.
+Problem 5 is worth 28 points for a total of 100 points.
+
+Problems 1 and 2 assume a 12-bit data size and reference the
+following hexadecimal subtraction :
+
+       247 hex - 675 hex
+
+#1. Give (in hex) the answer the computer would give to the subtraction.
+
+#2. Give the values of the  C,O,S and Z flags after the subtraction.
+
+#3. Again, assuming a 12-bit data size, give a two's complement-decimal
+    interpretation of 8C7 hex.
+
+#4. Give the entire 64-bit IEEE-754 encoding of the decimal number, 
+           -58.78125 
+
+#5. Design a circuit that computes y = floor(sqrt(x)) where x and y
+    will be unsigned whole numbers.
+
+    You may assume that 0 <= x <= 15 so
+    x will fit in four bits  x[3], x[2], x[1], x[0] 
+    so y will fit in two bits            y[1], y[0]
+
+    Your design should have only "and" gates, "or" gates and inverters.
+    Your "and" and "or" gates must have 2 inputs, that is, you are not
+    allowed to have gates with 3 or more inputs.
+
+    To receive full credit, your circuit should have at most 8 gates
+    although you can have as many inverters as you like.
+
+    Finally, write a "C" code simulation of the above circuit that is
+    faithful to the binary nature of the circuit.  Have the code print
+    the values of
+
+         x[3] x[2] x[1] x[0]    y[1] y[0]
+
+    for all possible combinations of the inputs.  Print them in the
+    above order and with the usual binary ordering of the x's.  The
+    first few lines of output should look like :
+
+         x[3] x[2] x[1] x[0]    y[1] y[0]
+          0    0    0    0       0    0
+          0    0    0    1       0    1
+          0    0    1    0       ?    ?

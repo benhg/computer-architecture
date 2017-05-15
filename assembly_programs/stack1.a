@@ -1,0 +1,13 @@
+cseg
+ldAi estack;!23!
+xchAs;
+ldAi 5;
+pushA; !Decrements stack pointer by 2, then moves accumulator there (mov 5 to 0021)!
+ldAi 4;
+pushA;!sp=001f,push 4 onto stack at that addr!
+done jmp done;
+dseg
+stack rw 10; !f!
+estack rw 1; !23!
+end
+

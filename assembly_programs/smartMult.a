@@ -1,0 +1,21 @@
+cseg
+clc;
+ldA A;
+
+loop rcrA; 
+    jae carry0;
+    jb carry1;
+
+    carry0 clc;
+    
+
+    carry1
+
+done jmp done;
+
+dseg
+A rw 1;
+B rw 1;
+ansh rw 1;
+ansl rw 1;
+

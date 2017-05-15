@@ -1,0 +1,69 @@
+	cseg
+
+	bldAi 1;
+	bstA powl;
+	bldAi 0;
+	bstA ansl;
+	bstA ansm;
+	bstA ansh;
+	bstA powm;
+	bstA powh;
+
+loop	ldA bin;
+	cmpAi 0;
+	je done;
+
+	rcrA;
+	stA bin;
+	jae skip;
+
+	bldA ansl;
+	clc;
+	badcA powl;
+	daa;
+	bstA ansl;
+
+	bldA ansm;
+	badcA powm;
+	daa;
+	bstA ansm;
+
+	bldA ansh;
+	badcA powh;
+	daa;
+	bstA ansh;
+
+skip	bldA powl;
+	clc;
+	badcA powl;
+	daa;
+	bstA powl;
+	
+	bldA powm;
+	badcA powm;
+	daa;
+	bstA powm;
+
+	bldA powh;
+	badcA powh;
+	daa;
+	bstA powh;
+	
+	clc;
+
+	jmp loop;
+
+done	jmp done;
+
+	dseg
+
+bin	rw 1;
+
+ansh	rb 1;
+ansm	rb 1;
+ansl	rb 1;
+powh	rb 1;
+powm	rb 1;
+powl	rb 1;
+
+	end

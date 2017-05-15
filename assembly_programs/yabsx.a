@@ -1,0 +1,22 @@
+! y = |x| !
+
+       cseg 
+
+       ldA  x ;
+       cmpAi 0000;
+
+       jge pos;
+       
+       notA ;
+       clc;
+       adcAi 0001;
+      
+pos    stA y;
+
+done   jmp done ;
+
+       dseg
+x      rw  1 ;
+y      rw  1 ;
+
+       end

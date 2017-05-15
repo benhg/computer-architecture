@@ -1,0 +1,38 @@
+    cseg
+    ldAi 0 ;
+    stA k ;
+    stA a ;
+    ldAi 1 ;
+    stA num ;
+    stA compare;
+   
+loop cmpA n;
+    ja done;
+    ldA k;
+    clc;
+    adcAi 1;
+    stA k ;
+    ldA a;
+    clc;
+    adcAi 6;
+    stA a;
+    clc ;
+    adcA num;
+    stA num;
+    clc;
+    adcA compare;
+    stA compare ;
+	
+    jb done ; 
+    jmp loop;
+	
+done jmp done ;
+    dseg
+n rw 1 ;
+k rw 1 ;
+a rw 1 ;
+num  rw 1 ;
+compare rw 1 ;
+
+end
+

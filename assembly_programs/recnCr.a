@@ -1,0 +1,78 @@
+	cseg
+	
+	ldAi 5000;
+	xchAS;
+	jmp main;
+
+choose	ldAi 0; !if k = 0, return 1!
+	cmpAS 2;
+	jne c1;
+	ldAi 1;
+	stAS -2;
+	jmp cret;
+
+c1	ldAS 4; !if k = n, return 1!
+	cmpAS 2;
+	jne c2;
+	ldAi 1;
+	stAS -2;
+	jmp cret;
+
+c2	ldAS 4; !child n = my n-1!
+	clc;
+	sbbAi 1;
+	stAS -4;
+
+	ldAS 2; !child k = my k-1!
+	clc;
+	sbbAi 1;
+	stAS -6;
+	
+	addSi -6; !do n-1 choose k-1!
+	call choose;
+	addSi 6;
+
+	ldAS -10; !get result!
+	stAS -2;
+
+	ldAS 4; !child n = my n-1!
+	clc;
+	sbbAi 1;
+	stAS -4;
+
+	ldAS 2; !child k = my k!
+	stAS -6;
+
+	addSi -6; !do n-1 choose k!
+	call choose;
+	addSi 6;
+
+	ldAS -10; !get result!
+	clc;
+	adcAS -2;
+	stAS -2;
+
+cret	ret;
+
+
+main	ldA mn;
+	pushA;
+	ldA mk;
+	pushA;
+	call choose;
+	addSi 4;
+	ldAS -8;
+	stA ans;
+
+done	jmp done;
+
+	dseg
+
+mn 	rw 1;
+mk 	rw 1;
+ans 	rw 1;
+
+	end
+
+
+

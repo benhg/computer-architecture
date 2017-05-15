@@ -1,0 +1,15 @@
+	cseg 
+	ldA x ;
+	cmpAi 0000 ;
+	stA y ;
+	jge done ;
+	notA ;
+	adcAi 0001;
+	stA y ;
+done	jmp done ;
+
+	dseg
+x	rw  1 ;
+y	rw  1 ;
+
+	end

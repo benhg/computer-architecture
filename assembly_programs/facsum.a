@@ -1,0 +1,31 @@
+    cseg
+
+    ldAi 0 ;
+    stA sum ;
+    ldA n ;
+    cmpAi 0 ;
+
+    jne loop ;
+    jmp done ;
+
+loop ldA sum ;
+    adcA n ;
+    stA sum ;
+
+    ldA n ;
+    clc ;
+    sbbAi 0001 ;
+    stA n ;
+    cmpAi 0 ;
+
+    jne loop ;
+ 
+done  jmp done ;
+
+    dseg
+
+n 	rw 1 ;
+sum 	rw 1 ;
+
+end
+

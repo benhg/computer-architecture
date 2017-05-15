@@ -1,0 +1,36 @@
+
+!  initialize first 5 elements of an array with negative two    !
+
+           cseg
+
+           ldAi      x          ;
+           stA     xpr          ;
+
+           ldAi      5          ;
+           stA   count          ;
+
+loop       ldAi    -2           ; 
+           stAr    xpr          ;
+
+           ldA     xpr          ; 
+           incA                 ;   
+           incA                 ;    !   why twice?   !
+           stA     xpr          ;
+
+           ldA   count          ;
+           decA                 ;
+           stA   count          ;
+
+           jne    loop          ;
+
+done       jmp    done          ;
+
+           dseg
+xpr        rw        1          ;
+count      rw        1          ;
+x          rw      100          ;
+
+           end
+
+
+         

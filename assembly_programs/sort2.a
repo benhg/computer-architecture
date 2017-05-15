@@ -1,0 +1,56 @@
+!heap sort or merge sort!
+!ffff when array is done!
+!using selection sort!
+
+cseg
+	ldAi	x	; !get array location into xpoint!
+	stA	xpoint	;
+
+oloop	ldAr	xpoint	; !check for ffff!
+	cmpAi	65535	;
+	je	done	;
+	
+	ldA	xpoint	; !set tempspot using  xpoint!
+	stA	tempspot; 
+	ldAr	xpoint	; !set value at tempspot into tempv!
+	stA	tempv	;
+
+2loop	ldAr	tempspot; !check for ffff!
+	cmpAi	65535	;
+	je	break	;
+	
+	ldAr 	tempspot; !check to see if value is smaller!
+	cmpA	tempv	;
+	jae	skip	;
+	
+	ldA	tempv	; !switch values if smaller!
+	stA	switch	;
+	ldAr	tempspot;		
+	stA	tempv	;
+	ldA	switch	;
+	stAr	tempspot;
+	
+skip	ldA	tempspot; !increments address counter!
+	incA		;
+	incA		;
+	stA	tempspot;
+	jmp	2loop	;
+		
+break	ldA	tempv	; !puts correct value back into array!
+	stAr	xpoint	;
+	ldA	xpoint	; !increments outerloop!
+	incA		;
+	incA		;
+	stA	xpoint	;
+	jmp	oloop	;
+
+done	jmp	done	;
+
+dseg
+x	rw	100	;
+tempv	rw	1	; 
+xpoint	rw	1	; !needs smallest number!
+tempspot	rw	1	; !keeps track of line!
+switch	rw	1	; !hold for switch1!
+
+end 

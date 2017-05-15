@@ -1,0 +1,48 @@
+    cseg
+clc ;
+ldA y0 ;
+notA ;
+stA y0 ;
+
+ldA y1 ;
+notA ;
+stA y1 ;
+
+ldA y2 ;
+notA ;
+stA y2 ;
+
+stc ;
+
+ldA x0 ;
+adcA y0 ;
+stA z0 ;
+
+ldA x1 ;
+adcA y1 ;
+stA z1 ;
+
+ldA x2 ;
+adcA y2 ;
+stA z2 ;
+
+cmc ;
+
+done jmp done ;
+
+    dseg
+
+x2 rw 1;
+x1 rw 1;
+x0 rw 1;
+y2 rw 1;
+y1 rw 1;
+y0 rw 1;
+z2 rw 1;
+z1 rw 1;
+z0 rw 1;
+
+end
+
+
+
